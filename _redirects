@@ -1,2 +1,20 @@
 # Cloudflare Pages redirects
-# /old-path  /new-path  301
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# --- Future: send old booking domain to primary ---
+# When moderneyesco.com is pointed at this same Pages project (or a worker),
+# uncomment a rule like the ones below so visitors land on moderneyescolorado.com.
+#
+# Example (host-aware; adjust when DNS is ready):
+# https://moderneyesco.com/*  https://moderneyescolorado.com/:splat  301
+# https://www.moderneyesco.com/*  https://moderneyescolorado.com/:splat  301
+#
+# Or a path-only fallback if both hostnames share this project:
+# /book-old  /book  301
+
+# Pretty paths (optional aliases → real files)
+/about       /about.html       200
+/services    /services.html    200
+/locations   /locations.html   200
+/reviews     /reviews.html     200
+/book        /book.html        200

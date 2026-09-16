@@ -1,5 +1,6 @@
-/* Modern Eyes — client preview styles
-   Soft medical/optical: whites, teal accents, airy type */
+/* Modern Eyes Colorado — final draft styles
+   Soft medical/optical: whites, teal accents, airy type
+   Multi-page system based on the client preview */
 
 :root {
   --bg: #f7fafb;
@@ -71,7 +72,7 @@ a:hover {
   margin-inline: auto;
 }
 
-/* Preview badge */
+/* Draft badge */
 .preview-badge {
   position: fixed;
   top: 12px;
@@ -87,6 +88,7 @@ a:hover {
   border-radius: 999px;
   padding: 0.35rem 0.75rem;
   box-shadow: var(--shadow);
+  max-width: calc(100vw - 24px);
 }
 
 /* Header */
@@ -129,14 +131,14 @@ a:hover {
 .nav {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.25rem;
 }
 
 .nav a {
   color: var(--ink-muted);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .nav a:hover,
@@ -292,6 +294,10 @@ a:hover {
 }
 
 /* Sections */
+.section {
+  padding: 4.5rem 0;
+}
+
 .section-head {
   margin-bottom: 2rem;
   max-width: 36rem;
@@ -313,13 +319,22 @@ a:hover {
 
 .locations,
 .book,
-.reviews {
+.reviews,
+.services,
+.about-page,
+.hours-section {
   padding: 4.5rem 0;
 }
 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
 }
 
@@ -332,7 +347,8 @@ a:hover {
 }
 
 .location-card h3,
-.book-card h3 {
+.book-card h3,
+.service-card h3 {
   font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 600;
@@ -341,9 +357,16 @@ a:hover {
 }
 
 .address {
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
   color: var(--ink-muted);
   font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.hours {
+  margin: 0 0 1rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
@@ -374,9 +397,15 @@ a:hover {
   font-weight: 500;
   line-height: 1.45;
   margin: 0;
-  max-width: 40rem;
+  max-width: 42rem;
   margin-inline: auto;
   color: var(--ink);
+}
+
+.doctors-line {
+  margin: 0.85rem 0 0;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
 }
 
 .book {
@@ -393,7 +422,29 @@ a:hover {
   gap: 1rem;
 }
 
-/* Reviews page */
+.book-placeholder {
+  margin-top: 2.5rem;
+  padding: 1.75rem;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--teal-soft);
+  text-align: center;
+}
+
+.book-placeholder h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+}
+
+.book-placeholder p {
+  margin: 0;
+  color: var(--ink-muted);
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+/* Page hero (inner pages) */
 .page-hero {
   padding: 3.5rem 0 2rem;
 }
@@ -405,7 +456,14 @@ a:hover {
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin: 0 0 1rem;
-  max-width: 18ch;
+  max-width: 22ch;
+}
+
+.page-hero .lead {
+  font-size: 1.1rem;
+  color: var(--ink-muted);
+  margin: 0 0 1rem;
+  max-width: 40rem;
 }
 
 .stats-line {
@@ -456,6 +514,113 @@ a:hover {
   font-weight: 500;
 }
 
+/* Services */
+.service-card p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+}
+
+.service-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 12px;
+  background: var(--teal-soft);
+  color: var(--teal-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* About content */
+.prose {
+  max-width: 40rem;
+}
+
+.prose p {
+  color: var(--ink-muted);
+  margin: 0 0 1.15rem;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.bio-card {
+  margin-top: 2rem;
+}
+
+.bio-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.bio-card .credential {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--teal);
+  margin: 0 0 1rem;
+}
+
+.highlight-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.highlight-list li {
+  padding: 0.85rem 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+}
+
+.highlight-list strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.plan-box {
+  background: var(--teal-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.plan-box h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0 0 0.5rem;
+}
+
+.plan-box p {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.map-link:hover {
+  text-decoration: underline;
+}
+
 .cta-band {
   padding: 4rem 0 5rem;
   text-align: center;
@@ -476,13 +641,14 @@ a:hover {
 
 /* Footer */
 .site-footer {
-  padding: 2rem 0 2.5rem;
+  padding: 2.5rem 0 2.5rem;
   border-top: 1px solid var(--border);
   background: var(--bg-elevated);
 }
 
 .footer-inner {
-  text-align: center;
+  display: grid;
+  gap: 1.5rem;
 }
 
 .footer-brand {
@@ -496,11 +662,44 @@ a:hover {
   color: var(--ink-muted);
 }
 
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
+.footer-nav a {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-nav a:hover {
+  color: var(--teal-deep);
+}
+
+.footer-meta {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .footer-inner {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .footer-right {
+    text-align: right;
+  }
+}
+
 /* Mobile */
-@media (max-width: 800px) {
-  .card-grid,
-  .reviews-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 900px) {
+  .nav {
+    gap: 0;
   }
 
   .nav-toggle {
@@ -547,6 +746,14 @@ a:hover {
   body.nav-open .nav-toggle span:last-child {
     transform: translateY(-4px) rotate(-45deg);
   }
+}
+
+@media (max-width: 800px) {
+  .card-grid,
+  .card-grid-2,
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
 
   .preview-badge {
     top: auto;
@@ -566,6 +773,10 @@ a:hover {
 }
 
 @media (min-width: 801px) and (max-width: 980px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .reviews-grid {
     grid-template-columns: repeat(2, 1fr);
   }

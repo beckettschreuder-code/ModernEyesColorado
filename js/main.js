@@ -1,4 +1,4 @@
-/* Modern Eyes preview — minimal interactions */
+/* Modern Eyes Colorado — final draft interactions */
 (function () {
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
