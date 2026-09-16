@@ -686,6 +686,13 @@ a:hover {
   pointer-events: none;
 }
 
+.page-hero .container {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40rem;
+}
+
 .page-hero h1 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 2.75rem);
@@ -755,7 +762,25 @@ a:hover {
 .services-accordion {
   display: grid;
   gap: 0.9rem;
-  max-width: 48rem;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.services .container {
+  text-align: center;
+}
+
+.services .services-accordion {
+  text-align: left;
+}
+
+.services .services-note {
+  margin: 2rem auto 0;
+  color: var(--ink-muted);
+  max-width: 36rem;
+  text-align: center;
 }
 
 .service-item {
@@ -1133,7 +1158,14 @@ a:hover {
     padding: 3.5rem 0 4.5rem;
   }
 
-  .page-hero h1 {
+  .page-hero .container {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40rem;
+}
+
+.page-hero h1 {
     max-width: none;
   }
 }
