@@ -49,22 +49,40 @@
       </div>
     </section>
 
-    <section class="photo-strip" aria-label="Clinic photos">
+    <section class="photo-carousel" aria-roledescription="carousel" aria-label="Photo slideshow">
       <div class="container">
-        <div class="photo-strip-grid">
-          <figure class="photo-strip-item">
-            <img src="assets/images/hero-2.jpg.webp" alt="Modern Eyes clinic interior" width="480" height="360" loading="lazy" />
-          </figure>
-          <figure class="photo-strip-item">
-            <img src="assets/images/hero-3.jpg.webp" alt="Welcoming eye care office" width="480" height="360" loading="lazy" />
-          </figure>
-          <figure class="photo-strip-item">
-            <img src="assets/images/frames.jpg.webp" alt="Eyeglass frames selection" width="480" height="360" loading="lazy" />
-          </figure>
-          <figure class="photo-strip-item">
-            <img src="assets/images/exam.jpg.webp" alt="Eye exam and vision care" width="480" height="360" loading="lazy" />
-          </figure>
+        <div class="carousel">
+          <div class="carousel-viewport">
+            <figure class="carousel-slide is-active">
+              <img src="assets/images/hero-2.jpg.webp" alt="Bright, welcoming eye care space" width="1200" height="675" />
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/hero-3.jpg.webp" alt="Warm modern clinic feel" width="1200" height="675" />
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/hero-5.jpg.webp" alt="Friendly practice atmosphere" width="1200" height="675" />
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/slide-lifestyle-1.jpg" alt="Stylish eyeglasses" width="1200" height="675" />
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/slide-lifestyle-2.jpg" alt="Clear, confident vision" width="1200" height="675" />
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/slide-lifestyle-3.jpg" alt="Sunglasses and outdoor light" width="1200" height="675" />
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/slide-lifestyle-4.jpg" alt="Everyday eyewear style" width="1200" height="675" />
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/soft-bg.jpg.webp" alt="Soft natural light" width="1200" height="675" />
+            </figure>
+          </div>
+          <button type="button" class="carousel-btn carousel-prev" aria-label="Previous photo">‹</button>
+          <button type="button" class="carousel-btn carousel-next" aria-label="Next photo">›</button>
+          <div class="carousel-dots" role="tablist" aria-label="Choose photo"></div>
         </div>
+        <p class="carousel-note">Photos shift automatically — use the arrows anytime.</p>
       </div>
     </section>
 
