@@ -1,4 +1,5 @@
-/* Modern Eyes Colorado — final draft interactions */
+/* Modern Eyes Colorado — final draft interactions
+   Nav + header scroll. Services accordion uses native <details>. */
 (function () {
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
