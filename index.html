@@ -34,7 +34,18 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" aria-roledescription="carousel" aria-label="Home photos">
+      <div class="hero-slides" aria-hidden="true">
+        <div class="hero-slide is-active" style="background-image:url('assets/images/hero-1.jpg.webp')"></div>
+        <div class="hero-slide" style="background-image:url('assets/images/hero-2.jpg.webp')"></div>
+        <div class="hero-slide" style="background-image:url('assets/images/hero-3.jpg.webp')"></div>
+        <div class="hero-slide" style="background-image:url('assets/images/hero-5.jpg.webp')"></div>
+        <div class="hero-slide" style="background-image:url('assets/images/slide-lifestyle-1.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('assets/images/slide-lifestyle-2.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('assets/images/slide-lifestyle-3.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('assets/images/slide-lifestyle-4.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('assets/images/soft-bg.jpg.webp')"></div>
+      </div>
       <div class="container hero-inner">
         <p class="eyebrow">Denver metro · Family eye care</p>
         <h1 class="hero-title">
@@ -47,43 +58,9 @@
           <a class="btn btn-secondary" href="reviews.html">See patient reviews</a>
         </div>
       </div>
-    </section>
-
-    <section class="photo-carousel" aria-roledescription="carousel" aria-label="Photo slideshow">
-      <div class="container">
-        <div class="carousel">
-          <div class="carousel-viewport">
-            <figure class="carousel-slide is-active">
-              <img src="assets/images/hero-2.jpg.webp" alt="Bright, welcoming eye care space" width="1200" height="675" />
-            </figure>
-            <figure class="carousel-slide">
-              <img src="assets/images/hero-3.jpg.webp" alt="Warm modern clinic feel" width="1200" height="675" />
-            </figure>
-            <figure class="carousel-slide">
-              <img src="assets/images/hero-5.jpg.webp" alt="Friendly practice atmosphere" width="1200" height="675" />
-            </figure>
-            <figure class="carousel-slide">
-              <img src="assets/images/slide-lifestyle-1.jpg" alt="Stylish eyeglasses" width="1200" height="675" />
-            </figure>
-            <figure class="carousel-slide">
-              <img src="assets/images/slide-lifestyle-2.jpg" alt="Clear, confident vision" width="1200" height="675" />
-            </figure>
-            <figure class="carousel-slide">
-              <img src="assets/images/slide-lifestyle-3.jpg" alt="Sunglasses and outdoor light" width="1200" height="675" />
-            </figure>
-            <figure class="carousel-slide">
-              <img src="assets/images/slide-lifestyle-4.jpg" alt="Everyday eyewear style" width="1200" height="675" />
-            </figure>
-            <figure class="carousel-slide">
-              <img src="assets/images/soft-bg.jpg.webp" alt="Soft natural light" width="1200" height="675" />
-            </figure>
-          </div>
-          <button type="button" class="carousel-btn carousel-prev" aria-label="Previous photo">‹</button>
-          <button type="button" class="carousel-btn carousel-next" aria-label="Next photo">›</button>
-          <div class="carousel-dots" role="tablist" aria-label="Choose photo"></div>
-        </div>
-        <p class="carousel-note">Photos shift automatically — use the arrows anytime.</p>
-      </div>
+      <button type="button" class="hero-btn hero-prev" aria-label="Previous photo">‹</button>
+      <button type="button" class="hero-btn hero-next" aria-label="Next photo">›</button>
+      <div class="hero-dots" role="tablist" aria-label="Choose photo"></div>
     </section>
 
     <section class="about-band" aria-labelledby="about-heading">

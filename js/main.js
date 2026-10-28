@@ -1,4 +1,4 @@
-/* Modern Eyes Colorado — nav + photo carousel */
+/* Modern Eyes Colorado — nav + hero photo slideshow */
 (function () {
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
@@ -28,20 +28,22 @@
     });
   }
 
-  const root = document.querySelector(".carousel");
-  if (!root) return;
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
 
-  const slides = Array.from(root.querySelectorAll(".carousel-slide"));
-  const prev = root.querySelector(".carousel-prev");
-  const next = root.querySelector(".carousel-next");
-  const dotsWrap = root.querySelector(".carousel-dots");
+  const slides = Array.from(hero.querySelectorAll(".hero-slide"));
+  if (!slides.length) return;
+
+  const prev = hero.querySelector(".hero-prev");
+  const next = hero.querySelector(".hero-next");
+  const dotsWrap = hero.querySelector(".hero-dots");
   let index = 0;
   let timer = null;
 
   slides.forEach(function (_, i) {
     const dot = document.createElement("button");
     dot.type = "button";
-    dot.className = "carousel-dot" + (i === 0 ? " is-active" : "");
+    dot.className = "hero-dot" + (i === 0 ? " is-active" : "");
     dot.setAttribute("aria-label", "Show photo " + (i + 1));
     dot.addEventListener("click", function () {
       go(i);
@@ -50,7 +52,7 @@
     dotsWrap.appendChild(dot);
   });
 
-  const dots = Array.from(dotsWrap.querySelectorAll(".carousel-dot"));
+  const dots = Array.from(dotsWrap.querySelectorAll(".hero-dot"));
 
   function go(i) {
     index = (i + slides.length) % slides.length;
@@ -66,14 +68,14 @@
     if (timer) clearInterval(timer);
     timer = setInterval(function () {
       go(index + 1);
-    }, 4500);
+    }, 5000);
   }
 
   if (prev) prev.addEventListener("click", function () { go(index - 1); restart(); });
   if (next) next.addEventListener("click", function () { go(index + 1); restart(); });
 
-  root.addEventListener("mouseenter", function () { if (timer) clearInterval(timer); });
-  root.addEventListener("mouseleave", restart);
+  hero.addEventListener("mouseenter", function () { if (timer) clearInterval(timer); });
+  hero.addEventListener("mouseleave", restart);
 
   restart();
 })();
