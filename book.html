@@ -3,23 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Book an Appointment — Modern Eyes</title>
-  <meta name="description" content="Book Modern Eyes appointments in Centennial, Castle Rock & Aurora. Online booking consolidating onto moderneyescolorado.com." />
+  <title>Book an Appointment &amp; New Patients — Modern Eyes</title>
+  <meta name="description" content="Book your Modern Eyes eye exam online in Centennial, Castle Rock or Aurora, download the new patient form, and see insurance and payment options." />
+  <meta name="theme-color" content="#14707d" />
+  <link rel="canonical" href="https://www.moderneyescolorado.com/book.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Modern Eyes" />
+  <meta property="og:title" content="Book an Appointment &amp; New Patients — Modern Eyes" />
+  <meta property="og:description" content="Book your Modern Eyes eye exam online in Centennial, Castle Rock or Aurora, download the new patient form, and see insurance and payment options." />
+  <meta property="og:url" content="https://www.moderneyescolorado.com/book.html" />
+  <meta property="og:image" content="https://www.moderneyescolorado.com/assets/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Modern Eyes logo over a photo of a man wearing glasses" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="preview-badge" aria-label="Draft notice">FINAL DRAFT — for Ben &amp; Everett</div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">
-        <img class="logo-img" src="assets/images/logo.png" alt="" width="160" height="18" />
-        <span class="logo-text">Modern Eyes</span>
+        <img class="logo-img" src="assets/images/logo.png" alt="Modern Eyes" width="612" height="69" />
       </a>
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav" id="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
@@ -27,84 +41,115 @@
         <a href="reviews.html">Reviews</a>
         <a class="nav-cta" href="book.html" aria-current="page">Book</a>
       </nav>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span>
       </button>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="page-hero">
       <div class="container">
         <p class="eyebrow">Appointments</p>
         <h1>Book with Modern Eyes.</h1>
-        <p class="lead">
-          One website for info and booking — so patients don’t have to jump between two domains.
-        </p>
+        <p class="lead">Schedule online anytime, or call the office you prefer.</p>
       </div>
     </section>
 
-    <section class="book" aria-labelledby="plan-heading">
+    <section class="book" aria-labelledby="online-heading">
       <div class="container">
-        <div class="plan-box">
-          <h2 id="plan-heading">The one-site plan</h2>
-          <p>
-            Today, some booking still lives on <strong>moderneyesco.com</strong>.
-            The goal is to move online booking onto <strong>moderneyescolorado.com</strong>
-            (this site) so everything is in one place. Until that embed is ready, please call the office you prefer.
-          </p>
+        <div class="book-panel">
+          <h2 id="online-heading">Book online</h2>
+          <p>Our online scheduler opens in a new tab. Pick Centennial, Castle Rock or Aurora, then choose a time that works for you.</p>
+          <a class="btn btn-primary btn-lg" href="https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com" target="_blank" rel="noopener noreferrer">Open the scheduler</a>
         </div>
 
-        <div class="section-head">
-          <h2>Call to book</h2>
-          <p>Pick your location — tap to call on your phone.</p>
+        <div class="section-head section-head-center">
+          <h2>Or call to book</h2>
+          <p>Tap a number to call from your phone.</p>
         </div>
 
         <div class="card-grid book-grid">
           <article class="card book-card">
             <h3>Centennial</h3>
-            <p class="address">7562 S University Blvd, Suite I<br />Mon–Fri 8–5</p>
-            <a class="btn btn-primary btn-block" href="tel:+13037732020">Call (303) 773-2020</a>
+            <p class="address">7562 S University Blvd, Suite I<br />Mon–Fri 8:00 am – 5:00 pm</p>
+            <a class="btn btn-secondary btn-block" href="tel:+13037732020">Call (303) 773-2020</a>
           </article>
           <article class="card book-card">
             <h3>Castle Rock</h3>
-            <p class="address">834 S Perry St, Suite E<br />Mon–Fri 8–5</p>
-            <a class="btn btn-primary btn-block" href="tel:+13036880707">Call (303) 688-0707</a>
+            <p class="address">834 S Perry St, Suite E<br />Mon–Fri 8:00 am – 5:00 pm</p>
+            <a class="btn btn-secondary btn-block" href="tel:+13036880707">Call (303) 688-0707</a>
           </article>
           <article class="card book-card">
+            <!-- NEEDS BEN'S CONFIRMATION: Aurora hours differ between the old sites. moderneyescolorado.com (shown here) says Tue–Fri 8:30–5:00, Sat 8:00–2:00. moderneyesco.com says Tue–Thu 9:00–5:30, Fri 9:00–5:00, Sat 9:00–2:00. -->
             <h3>Aurora</h3>
-            <p class="address">4252 S Chambers Rd<br />Tue–Fri 8:30–5 · Sat 8–2 · Mon closed</p>
-            <a class="btn btn-primary btn-block" href="tel:+13036901696">Call (303) 690-1696</a>
+            <p class="address">4252 S Chambers Rd<br />Tue–Fri 8:30 am – 5:00 pm<br />Sat 8:00 am – 2:00 pm</p>
+            <a class="btn btn-secondary btn-block" href="tel:+13036901696">Call (303) 690-1696</a>
           </article>
         </div>
+      </div>
+    </section>
 
-        <div class="book-placeholder" aria-label="Future online booking">
-          <h3>Online booking (coming here)</h3>
-          <p>
-            Placeholder for a future booking widget or embed on moderneyescolorado.com.
-            When Ben’s booking system is ready, it drops into this spot — no second website needed.
-          </p>
+    <section class="patients" id="new-patients" aria-labelledby="np-heading">
+      <div class="container">
+        <div class="section-head section-head-center">
+          <h2 id="np-heading">New patients</h2>
+          <p>Save time at your first visit by filling out your paperwork ahead of time.</p>
         </div>
+        <div class="card-grid-2">
+          <article class="card info-card">
+            <h3>New patient form</h3>
+            <p>Download and print the New Patient Registration &amp; Health History form, fill it out, and bring it with you to your appointment. It tells us about your health and any questions, concerns or goals you have for your eyes.</p>
+            <a class="btn btn-primary" href="assets/forms/new-patient-form.pdf" target="_blank" rel="noopener">Download the form (PDF)</a>
+          </article>
+          <article class="card info-card" id="insurance">
+            <h3>Insurance &amp; payments</h3>
+            <p>Our staff works directly with you and your vision insurer to submit claims and explain your benefits. Insurance plans we carry include:</p>
+            <ul class="pill-list">
+              <li>Medicaid</li>
+              <li>Medicare (Railroad Medicare)</li>
+              <li>UMR</li>
+              <li>UnitedHealthcare</li>
+            </ul>
+            <p>Not sure about your plan? Call <a href="tel:+13037732020">(303) 773-2020</a> and we'll check for you.</p>
+            <p>We accept cash, checks, Visa, MasterCard, Discover, American Express, VSP gift certificates and Flexible Spending Account (FSA) cards. Financing is available through <a href="https://www.carecredit.com/" target="_blank" rel="noopener noreferrer">CareCredit</a>.</p>
+          </article>
+        </div>
+        <aside class="offer-card" aria-label="Current offer">
+          <p class="offer-tag">Current offer</p>
+          <h3>20% off your second pair — sunglasses included</h3>
+          <p>Use your vision insurance on your first complete pair of glasses and get 20% off a second complete pair of prescription glasses or prescription sunglasses.</p>
+          <p class="offer-fine">Savings are off the full retail price of frame and lenses with antireflective coating. Cannot be combined with any other offer. Good on multiple complete pairs purchased at the same time. Some restrictions apply. Expires 06/30/2027.</p>
+        </aside>
+
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>
-        <p class="footer-brand">Modern Eyes · moderneyescolorado.com</p>
-        <p class="footer-preview">FINAL DRAFT — for Ben &amp; Everett review. Not the live site yet.</p>
+      <div class="footer-col">
+        <img class="footer-logo" src="assets/images/logo.png" alt="Modern Eyes" width="612" height="69" loading="lazy" />
+        <p class="footer-tag">We are passionate about your vision.</p>
         <nav class="footer-nav" aria-label="Footer">
           <a href="about.html">About</a>
           <a href="services.html">Services</a>
           <a href="locations.html">Locations</a>
           <a href="reviews.html">Reviews</a>
-          <a href="book.html">Book</a>
+          <a href="book.html">Book &amp; new patients</a>
         </nav>
       </div>
-      <div class="footer-right">
-        <p class="footer-meta">Centennial · Castle Rock · Aurora, CO</p>
+      <div class="footer-col footer-contact">
+        <p><strong>Centennial</strong> <a href="tel:+13037732020">(303) 773-2020</a></p>
+        <p><strong>Castle Rock</strong> <a href="tel:+13036880707">(303) 688-0707</a></p>
+        <p><strong>Aurora</strong> <a href="tel:+13036901696">(303) 690-1696</a></p>
+        <p><a href="mailto:BeSeen@ModernEyesCO.com">BeSeen@ModernEyesCO.com</a></p>
+        <p><a href="https://www.instagram.com/moderneyesco/" target="_blank" rel="noopener noreferrer">Instagram @moderneyesco</a></p>
       </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Modern Eyes · Centennial · Castle Rock · Aurora, CO</p>
+      <p class="footer-preview">Preview site — not live yet.</p>
     </div>
   </footer>
 

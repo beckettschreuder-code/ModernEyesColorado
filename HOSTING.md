@@ -1,6 +1,6 @@
 # Hosting — Modern Eyes Colorado
 
-Plain guide for Bex, Everett, Ben, and helpers.
+Plain guide for Bex, Ben, and helpers.
 
 ---
 
@@ -61,7 +61,7 @@ Optional later: a **care plan** (~**$25/month**) if someone helps with small upd
 
 ---
 
-## Simple go-live steps (Bex / Everett)
+## Simple go-live steps (Bex)
 
 Do these when Ben says “go.” Ask Dad/Ian for domain steps if needed.
 
@@ -93,8 +93,8 @@ Do these when Ben says “go.” Ask Dad/Ian for domain steps if needed.
 8. **Later: redirect moderneyesco.com**  
    When ready, set moderneyesco.com to redirect to the primary site (see comment in `_redirects`). That way old booking bookmarks still land on the new site.
 
-9. **Online booking embed**  
-   When Ben’s booking tool is ready, place it in the placeholder on `book.html` (and/or the home `#book` section).
+9. **Online booking**  
+   The “Book online” buttons already open Ben’s Eyefinity scheduler. That link lives on Eyefinity’s servers, so it keeps working even after moderneyesco.com is redirected. Don’t change the `domainName=moderneyesco.com` part of the link — it’s how Eyefinity finds Ben’s account.
 
 ---
 
@@ -109,7 +109,7 @@ Do these when Ben says “go.” Ask Dad/Ian for domain steps if needed.
 
 | Person | Typical help |
 |--------|----------------|
-| Bex / Everett | Build pages, push to GitHub, Cloudflare Pages setup |
+| Bex | Build pages, push to GitHub, Cloudflare Pages setup |
 | Dad / Ian | Domain login, DNS, payments if needed |
 | Ben | Approve content, real reviews, booking system choice, “go live” |
 

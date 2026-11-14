@@ -3,23 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Modern Eyes — Family Eye Care in Denver Metro</title>
-  <meta name="description" content="Modern Eyes — passionate about your vision. Optometry in Centennial, Castle Rock & Aurora, Colorado. Book at moderneyescolorado.com." />
+  <title>Modern Eyes — Optometrist in Centennial, Castle Rock &amp; Aurora, CO</title>
+  <meta name="description" content="Modern Eyes is a family eye care practice with offices in Centennial, Castle Rock and Aurora, Colorado. Eye exams, contact lenses, designer eyewear and more. Book online." />
+  <meta name="theme-color" content="#14707d" />
+  <link rel="canonical" href="https://www.moderneyescolorado.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Modern Eyes" />
+  <meta property="og:title" content="Modern Eyes — Optometrist in Centennial, Castle Rock &amp; Aurora, CO" />
+  <meta property="og:description" content="Modern Eyes is a family eye care practice with offices in Centennial, Castle Rock and Aurora, Colorado. Eye exams, contact lenses, designer eyewear and more. Book online." />
+  <meta property="og:url" content="https://www.moderneyescolorado.com/" />
+  <meta property="og:image" content="https://www.moderneyescolorado.com/assets/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Modern Eyes logo over a photo of a man wearing glasses" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="preview-badge" aria-label="Draft notice">FINAL DRAFT — for Ben &amp; Everett</div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">
-        <img class="logo-img" src="assets/images/logo.png" alt="" width="160" height="18" />
-        <span class="logo-text">Modern Eyes</span>
+        <img class="logo-img" src="assets/images/logo.png" alt="Modern Eyes" width="612" height="69" />
       </a>
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav" id="site-nav" aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
@@ -27,14 +41,14 @@
         <a href="reviews.html">Reviews</a>
         <a class="nav-cta" href="book.html">Book</a>
       </nav>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span>
       </button>
     </div>
   </header>
 
-  <main>
-    <section class="hero" aria-roledescription="carousel" aria-label="Home photos">
+  <main id="main">
+    <section class="hero" aria-roledescription="carousel" aria-label="Photos of Modern Eyes patients and eyewear">
       <div class="hero-slides" aria-hidden="true">
         <div class="hero-slide is-active" style="background-image:url('assets/images/hero-1.jpg.webp')"></div>
         <div class="hero-slide" style="background-image:url('assets/images/hero-2.jpg.webp')"></div>
@@ -52,113 +66,135 @@
           <span class="wordmark">Modern Eyes</span>
         </h1>
         <p class="hero-headline">Passionate about your vision.</p>
-        <p class="hero-sub">Clean, thorough exams and warm care for families across Centennial, Castle Rock &amp; Aurora.</p>
+        <p class="hero-sub">Thorough eye exams, contact lenses and designer eyewear for the whole family, in Centennial, Castle Rock &amp; Aurora.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#book">Book an appointment</a>
+          <a class="btn btn-primary" href="https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com" target="_blank" rel="noopener noreferrer">Book online</a>
           <a class="btn btn-secondary" href="reviews.html">See patient reviews</a>
         </div>
       </div>
-      <button type="button" class="hero-btn hero-prev" aria-label="Previous photo">‹</button>
-      <button type="button" class="hero-btn hero-next" aria-label="Next photo">›</button>
-      <div class="hero-dots" role="tablist" aria-label="Choose photo"></div>
+      <div class="hero-controls">
+        <button type="button" class="hero-btn hero-prev" aria-label="Previous photo">‹</button>
+        <div class="hero-dots" role="group" aria-label="Choose photo"></div>
+        <button type="button" class="hero-btn hero-next" aria-label="Next photo">›</button>
+      </div>
     </section>
 
     <section class="about-band" aria-labelledby="about-heading">
       <div class="container about-inner">
-        <h2 id="about-heading" class="sr-only">About</h2>
+        <h2 id="about-heading" class="sr-only">About Modern Eyes</h2>
         <p class="about-line">
-          Modern optometry with a personal touch — thorough exams, clear answers, and care that fits your family.
+          Dr. Sturdy and our highly skilled team welcome you to a practice where we strive to make every patient feel at home.
         </p>
-        <div class="doctor-avatars" aria-hidden="true">
-          <img src="assets/images/benjamin.jpg.webp" alt="" width="48" height="48" loading="lazy" />
-          <img src="assets/images/keesey.jpg.webp" alt="" width="48" height="48" loading="lazy" />
-          <img src="assets/images/anderson.jpg.webp" alt="" width="48" height="48" loading="lazy" />
+        <div class="doctor-avatars">
+          <img src="assets/images/benjamin.jpg.webp" alt="Dr. Benjamin Sturdy" width="56" height="56" loading="lazy" />
+          <img src="assets/images/keesey.jpg.webp" alt="Dr. Tara Keesey" width="56" height="56" loading="lazy" />
+          <img src="assets/images/anderson.jpg.webp" alt="Dr. Kevin Anderson" width="56" height="56" loading="lazy" />
         </div>
         <p class="doctors-line">
           Led by <strong>Benjamin Sturdy, O.D.</strong>, with Drs. Tara Keesey and Kevin Anderson.
-          <a href="about.html">Learn more</a>
+          <a href="about.html">Meet our doctors</a>
         </p>
+      </div>
+    </section>
+
+    <section class="highlights" aria-labelledby="highlights-heading">
+      <div class="container">
+        <div class="section-head section-head-center">
+          <h2 id="highlights-heading">Care for every set of eyes</h2>
+          <p>From routine exams to hard-to-fit contacts, here's how we can help.</p>
+        </div>
+        <div class="card-grid highlight-grid">
+          <a class="card highlight-card" href="services.html#exams">
+            <h3>Eye exams</h3>
+            <p>Comprehensive exams for adults and kids, often drop-free with retinal imaging.</p>
+          </a>
+          <a class="card highlight-card" href="services.html#contacts">
+            <h3>Contact lenses</h3>
+            <p>Fittings for daily, extended-wear, gas permeable and hard-to-fit lenses.</p>
+          </a>
+          <a class="card highlight-card" href="services.html#eyewear">
+            <h3>Designer eyewear</h3>
+            <p>A full optical department with fashion frames and prescription sunglasses.</p>
+          </a>
+        </div>
+        <aside class="offer-card" aria-label="Current offer">
+          <p class="offer-tag">Current offer</p>
+          <h3>20% off your second pair — sunglasses included</h3>
+          <p>Use your vision insurance on your first complete pair of glasses and get 20% off a second complete pair of prescription glasses or prescription sunglasses.</p>
+          <p class="offer-fine">Savings are off the full retail price of frame and lenses with antireflective coating. Cannot be combined with any other offer. Good on multiple complete pairs purchased at the same time. Some restrictions apply. Expires 06/30/2027.</p>
+        </aside>
+
       </div>
     </section>
 
     <section class="locations" id="locations" aria-labelledby="locations-heading">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head section-head-center">
           <h2 id="locations-heading">Three convenient locations</h2>
-          <p>Visit us close to home — or call the office that works best for you.</p>
+          <p>Visit the office closest to home, or call the one that works best for you.</p>
         </div>
         <div class="card-grid">
           <article class="card location-card">
             <h3>Centennial</h3>
             <p class="address">7562 S University Blvd, Suite I<br />Centennial, CO 80122</p>
-            <p class="hours">Mon–Fri 8:00–5:00</p>
+            <p class="hours">Mon–Fri 8:00 am – 5:00 pm</p>
             <a class="phone" href="tel:+13037732020">(303) 773-2020</a>
           </article>
           <article class="card location-card">
             <h3>Castle Rock</h3>
             <p class="address">834 S Perry St, Suite E<br />Castle Rock, CO 80104</p>
-            <p class="hours">Mon–Fri 8:00–5:00</p>
+            <p class="hours">Mon–Fri 8:00 am – 5:00 pm</p>
             <a class="phone" href="tel:+13036880707">(303) 688-0707</a>
           </article>
           <article class="card location-card">
+            <!-- NEEDS BEN'S CONFIRMATION: Aurora hours differ between the old sites. moderneyescolorado.com (shown here) says Tue–Fri 8:30–5:00, Sat 8:00–2:00. moderneyesco.com says Tue–Thu 9:00–5:30, Fri 9:00–5:00, Sat 9:00–2:00. -->
             <h3>Aurora</h3>
             <p class="address">4252 S Chambers Rd<br />Aurora, CO 80014</p>
-            <p class="hours">Tue–Fri 8:30–5:00 · Sat 8:00–2:00<br />Mon closed</p>
+            <p class="hours">Tue–Fri 8:30 am – 5:00 pm<br />Sat 8:00 am – 2:00 pm<br />Sun &amp; Mon closed</p>
             <a class="phone" href="tel:+13036901696">(303) 690-1696</a>
           </article>
         </div>
-        <p style="margin: 1.5rem 0 0; text-align: center;">
-          <a href="locations.html">Full location details &amp; hours →</a>
-        </p>
+
+        <p class="more-link"><a href="locations.html">Maps &amp; full hours →</a></p>
       </div>
     </section>
 
     <section class="book" id="book" aria-labelledby="book-heading">
       <div class="container">
-        <div class="section-head">
+        <div class="book-panel">
           <h2 id="book-heading">Book an appointment</h2>
-          <p class="book-note">
-            Online booking will live here on <strong>moderneyescolorado.com</strong> —
-            replacing the separate moderneyesco.com booking site. For now, call your preferred office.
-          </p>
+          <p>Pick your office and an open time in our online scheduler, or give us a call.</p>
+          <a class="btn btn-primary btn-lg" href="https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com" target="_blank" rel="noopener noreferrer">Book online</a>
+          <p class="book-small">New patient? <a href="book.html#new-patients">Download your form and check insurance</a> before your visit.</p>
         </div>
-        <div class="card-grid book-grid">
-          <article class="card book-card">
-            <h3>Centennial</h3>
-            <a class="btn btn-primary btn-block" href="tel:+13037732020">Call (303) 773-2020</a>
-          </article>
-          <article class="card book-card">
-            <h3>Castle Rock</h3>
-            <a class="btn btn-primary btn-block" href="tel:+13036880707">Call (303) 688-0707</a>
-          </article>
-          <article class="card book-card">
-            <h3>Aurora</h3>
-            <a class="btn btn-primary btn-block" href="tel:+13036901696">Call (303) 690-1696</a>
-          </article>
-        </div>
-        <p style="margin: 1.5rem 0 0; text-align: center;">
-          <a href="book.html">Booking hub &amp; one-site plan →</a>
-        </p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>
-        <p class="footer-brand">Modern Eyes · moderneyescolorado.com</p>
-        <p class="footer-preview">FINAL DRAFT — for Ben &amp; Everett review. Not the live site yet.</p>
+      <div class="footer-col">
+        <img class="footer-logo" src="assets/images/logo.png" alt="Modern Eyes" width="612" height="69" loading="lazy" />
+        <p class="footer-tag">We are passionate about your vision.</p>
         <nav class="footer-nav" aria-label="Footer">
           <a href="about.html">About</a>
           <a href="services.html">Services</a>
           <a href="locations.html">Locations</a>
           <a href="reviews.html">Reviews</a>
-          <a href="book.html">Book</a>
+          <a href="book.html">Book &amp; new patients</a>
         </nav>
       </div>
-      <div class="footer-right">
-        <p class="footer-meta">Centennial · Castle Rock · Aurora, CO</p>
+      <div class="footer-col footer-contact">
+        <p><strong>Centennial</strong> <a href="tel:+13037732020">(303) 773-2020</a></p>
+        <p><strong>Castle Rock</strong> <a href="tel:+13036880707">(303) 688-0707</a></p>
+        <p><strong>Aurora</strong> <a href="tel:+13036901696">(303) 690-1696</a></p>
+        <p><a href="mailto:BeSeen@ModernEyesCO.com">BeSeen@ModernEyesCO.com</a></p>
+        <p><a href="https://www.instagram.com/moderneyesco/" target="_blank" rel="noopener noreferrer">Instagram @moderneyesco</a></p>
       </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Modern Eyes · Centennial · Castle Rock · Aurora, CO</p>
+      <p class="footer-preview">Preview site — not live yet.</p>
     </div>
   </footer>
 

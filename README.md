@@ -1,10 +1,10 @@
-# Modern Eyes Colorado — Final Draft
+# Modern Eyes Colorado — Preview Site
 
 Website draft for **Modern Eyes** (Dr. Benjamin Sturdy, O.D.).
 
 Primary domain: **moderneyescolorado.com**
 
-This is a **final draft** for Ben and Everett to review. It is not the live site yet. Pages show a small badge: “FINAL DRAFT — for Ben & Everett.”
+This is a **preview** for Ben to review. It is not the live site yet. The footer shows a small “Preview site — not live yet” note (remove it at go-live).
 
 GitHub: https://github.com/beckettschreuder-code/ModernEyesColorado
 
@@ -14,7 +14,7 @@ GitHub: https://github.com/beckettschreuder-code/ModernEyesColorado
 
 A clean, modern site for a Colorado optometry practice with three offices (Centennial, Castle Rock, Aurora).
 
-**Goal:** Keep all info and booking on **one** domain (moderneyescolorado.com). Booking used to live on moderneyesco.com — that will move here later.
+**Goal:** Keep all info and booking on **one** domain (moderneyescolorado.com). The “Book online” buttons open Ben’s existing Eyefinity scheduler (`https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com`), where patients pick Centennial, Castle Rock or Aurora.
 
 ---
 
@@ -22,14 +22,14 @@ A clean, modern site for a Colorado optometry practice with three offices (Cente
 
 | File | What it is |
 |------|------------|
-| `index.html` | Home / splash — hero, about strip, locations, book section |
-| `about.html` | About Modern Eyes + Dr. Sturdy highlights |
-| `services.html` | Eye exams, glasses/contacts, screening, LASIK care |
-| `locations.html` | Three offices with addresses, phones, hours |
+| `index.html` | Home — photo slideshow hero, doctors strip, service highlights, current offer, locations, booking |
+| `about.html` | About Modern Eyes + full bios for Drs. Sturdy, Keesey and Anderson |
+| `services.html` | Clickable services: exams, drop-free imaging, contacts, hard-to-fit contacts, eyewear, eye health & emergencies, LASIK, kids |
+| `locations.html` | Three offices with addresses, phones, hours, maps, email |
 | `reviews.html` | Sample review cards (real quotes later) |
-| `book.html` | Booking hub — call buttons + space for future online booking |
+| `book.html` | Book online (Eyefinity), call buttons, new patient form (PDF), insurance & payments, current offer |
 
-Shared files: `css/styles.css`, `js/main.js`
+Shared files: `css/styles.css`, `js/main.js`, `favicon.ico`, `assets/forms/new-patient-form.pdf` (copied from Ben’s current site)
 
 Also: `HOSTING.md` (how to put the site online), `_headers`, `_redirects` (for Cloudflare Pages)
 
@@ -62,7 +62,7 @@ You can also open `index.html` by double-clicking it. Relative links should stil
 
 ## Design notes
 
-- Colors: soft white + teal (medical / optical feel)
+- Colors: warm cream + teal + coral/peach (friendly but professional)
 - Fonts: **DM Sans** (body) + **Fraunces** (headings)
 - Works on phone and desktop
 
@@ -73,3 +73,12 @@ You can also open `index.html` by double-clicking it. Relative links should stil
 Read **[HOSTING.md](HOSTING.md)** for plain-language steps to put this site live (we recommend Cloudflare Pages — free).
 
 Dad / Ian can help with domain DNS (the settings that point the website name to the host) and any money steps.
+
+---
+
+## Before go-live (needs Ben)
+
+- Confirm **Aurora hours** (the two old sites disagree — see the HTML comment next to Aurora hours).
+- Confirm the **insurance list** (taken from the logos on moderneyescolorado.com: Medicaid, Railroad Medicare, UMR, UnitedHealthcare).
+- Swap the **sample reviews** for real patient reviews.
+- Remove the “Preview site — not live yet” line in the footer of each page.
