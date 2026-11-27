@@ -14,7 +14,7 @@ GitHub: https://github.com/beckettschreuder-code/ModernEyesColorado
 
 A clean, modern site for a Colorado optometry practice with three offices (Centennial, Castle Rock, Aurora).
 
-**Goal:** Keep all info and booking on **one** domain (moderneyescolorado.com). The “Book online” buttons open Ben’s existing Eyefinity scheduler (`https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com`), where patients pick Centennial, Castle Rock or Aurora.
+**Goal:** Keep all info and booking on **one** domain (moderneyescolorado.com). The “Book online” buttons go to the booking step on `book.html#book-online`, where patients pick Centennial, Castle Rock or Aurora and see what they can book online vs. by phone. From there, “Continue to online scheduler” opens Ben’s Eyefinity scheduler (`https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com`) in a new tab so the site stays open. Location links like `book.html#book-aurora` preselect an office.
 
 ---
 

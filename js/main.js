@@ -1,5 +1,6 @@
 /* Modern Eyes Colorado — nav + hero photo slideshow */
 (function () {
+  document.documentElement.classList.add("js");
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".nav");
@@ -53,6 +54,55 @@
   }
   openFromHash();
   window.addEventListener("hashchange", openFromHash);
+
+  // Booking step: pick an office to see what can be booked online there
+  const choices = Array.from(document.querySelectorAll(".loc-choice"));
+  const panels = Array.from(document.querySelectorAll(".booking-panel"));
+  const prompt = document.getElementById("loc-prompt");
+  if (choices.length && panels.length) {
+    function selectLoc(slug, focus) {
+      let found = false;
+      panels.forEach(function (p) {
+        const on = p.dataset.loc === slug;
+        p.hidden = !on;
+        if (on) found = true;
+      });
+      choices.forEach(function (c) {
+        c.setAttribute("aria-pressed", c.dataset.loc === slug ? "true" : "false");
+      });
+      if (prompt) prompt.hidden = found;
+      if (found && focus) {
+        const panel = document.getElementById("book-" + slug);
+        panel.focus({ preventScroll: true });
+        const rect = panel.getBoundingClientRect();
+        if (rect.top > window.innerHeight * 0.6) panel.scrollIntoView({ block: "start" });
+      }
+      return found;
+    }
+    choices.forEach(function (c) {
+      c.setAttribute("role", "button");
+      c.addEventListener("click", function (e) {
+        e.preventDefault();
+        selectLoc(c.dataset.loc, true);
+        if (history.replaceState) history.replaceState(null, "", "#book-" + c.dataset.loc);
+      });
+    });
+    function fromHash(scroll) {
+      const m = location.hash.match(/^#book-(centennial|castle-rock|aurora)$/);
+      if (m) {
+        selectLoc(m[1], false);
+        if (scroll) {
+          const sec = document.getElementById("book-online");
+          requestAnimationFrame(function () { sec.scrollIntoView(); });
+        }
+      } else if (!scroll) {
+        selectLoc(null, false);
+      }
+    }
+    fromHash(false);
+    if (/^#book-(centennial|castle-rock|aurora)$/.test(location.hash)) fromHash(true);
+    window.addEventListener("hashchange", function () { fromHash(true); });
+  }
 
   const hero = document.querySelector(".hero");
   if (!hero) return;

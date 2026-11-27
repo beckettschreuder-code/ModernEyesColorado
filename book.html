@@ -40,7 +40,7 @@
         <a href="locations.html">Locations</a>
         <a href="book.html" aria-current="page">Patients</a>
         <a href="reviews.html">Reviews</a>
-        <a class="nav-cta" href="https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com" target="_blank" rel="noopener noreferrer">Book online</a>
+        <a class="nav-cta" href="book.html#book-online">Book online</a>
       </nav>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span>
@@ -51,22 +51,261 @@
   <main id="main">
     <section class="page-hero">
       <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">← Back to home</a></nav>
         <p class="eyebrow">Appointments</p>
         <h1>Book &amp; get ready for your visit.</h1>
-        <p class="lead">Schedule online anytime, or call the office you prefer. New patient? Everything you need is below.</p>
+        <p class="lead">Pick your office, see what you can book online, or give us a call. New patient? <a href="#new-patients">Everything you need is below</a>.</p>
       </div>
     </section>
 
-    <section class="book" aria-labelledby="online-heading">
+    <!-- Booking options below were read from Ben's live Eyefinity scheduler (Nov 26, 2026). Online visit types:
+         Centennial & Castle Rock: Eye Exam - New Patient, Eye Exam - Existing Patient, Medical Visit (Non-Emergency).
+         Aurora: Eye Exam - New Patient, Eye Exam - Existing Patient (no Medical Visit online).
+         Doctors offered online: Centennial & Castle Rock = Sturdy, Keesey; Aurora = Sturdy, Anderson.
+         If Ben changes visit types in Eyefinity, update this section. -->
+    <section class="booking" id="book-online" aria-labelledby="online-heading">
       <div class="container">
-        <div class="book-panel">
-          <h2 id="online-heading">Book online</h2>
-          <p>Our online scheduler opens in a new tab. Pick Centennial, Castle Rock or Aurora, then choose a time that works for you.</p>
-          <a class="btn btn-primary btn-lg" href="https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com" target="_blank" rel="noopener noreferrer">Open the scheduler</a>
+        <div class="section-head section-head-center">
+          <p class="eyebrow">Book an appointment</p>
+          <h2 id="online-heading">Choose your office</h2>
+          <p>See what you can book online at each office, and what to call about. The online scheduler opens in a new tab, so this page stays open and you can come right back.</p>
         </div>
 
+        <div class="loc-picker" role="group" aria-label="Choose an office">
+          <a class="loc-choice" href="#book-centennial" data-loc="centennial" aria-controls="book-centennial">
+            <span class="loc-choice-name">Centennial</span>
+            <span class="loc-choice-addr">7562 S University Blvd, Suite I</span>
+          </a>
+          <a class="loc-choice" href="#book-castle-rock" data-loc="castle-rock" aria-controls="book-castle-rock">
+            <span class="loc-choice-name">Castle Rock</span>
+            <span class="loc-choice-addr">834 S Perry St, Suite E</span>
+          </a>
+          <a class="loc-choice" href="#book-aurora" data-loc="aurora" aria-controls="book-aurora">
+            <span class="loc-choice-name">Aurora</span>
+            <span class="loc-choice-addr">4252 S Chambers Rd</span>
+          </a>
+        </div>
+        <p class="loc-prompt" id="loc-prompt">Tap an office above to see your booking options.</p>
+
+        <div class="booking-panel" id="book-centennial" data-loc="centennial" tabindex="-1" aria-labelledby="book-centennial-title">
+          <div class="booking-panel-head">
+            <h3 id="book-centennial-title">Centennial office</h3>
+            <p class="booking-meta">7562 S University Blvd, Suite I · Mon–Fri 8:00 am – 5:00 pm</p>
+            <p class="booking-summary">At Centennial you can book an <strong>eye exam</strong> (new or existing patient) or a <strong>non-emergency medical visit</strong> online. For other services, call <a href="tel:+13037732020">(303) 773-2020</a>.</p>
+          </div>
+          <div class="booking-cols">
+            <div class="booking-online">
+              <h4>Book online</h4>
+              <ul class="visit-types">
+                <li>Eye exam — new patient</li>
+                <li>Eye exam — existing patient</li>
+                <li>Medical visit (non-emergency)</li>
+              </ul>
+              <p class="booking-steps">In the scheduler, choose <strong>Modern Eyes – Centennial</strong>, then your visit type, insurance and a time. You can pick Dr. Benjamin Sturdy or Dr. Tara Keesey, or “No preference.”</p>
+              <a class="btn btn-primary btn-block booking-go" href="https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com" target="_blank" rel="noopener">Continue to online scheduler <svg class="ext-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+              <p class="new-tab-hint" aria-hidden="true">Opens in a new tab. This page stays open.</p>
+              <a class="btn btn-secondary btn-block" href="tel:+13037732020">Call Centennial (303) 773-2020</a>
+            </div>
+            <div class="booking-services">
+              <h4>Our services</h4>
+              <ul class="svc-list">
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#exams">Comprehensive eye &amp; vision exams</a><span class="svc-desc">Yearly checkups: vision, eye pressure and a full eye health check.</span></div>
+                  <span class="svc-tag tag-online">Book online · eye exam</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#technology">Drop-free exams &amp; retinal imaging</a><span class="svc-desc">Ultra-wide-field retinal imaging is standard, often with no dilating drops.</span></div>
+                  <span class="svc-tag tag-online">Part of your exam</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#contacts">Contact lens exams &amp; fittings</a><span class="svc-desc">Soft, toric, multifocal and colored lenses. Ask at your eye exam or call.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#specialty-contacts">Hard-to-fit &amp; specialty contacts</a><span class="svc-desc">Scleral, hybrid and gas permeable lenses for keratoconus, dry eye and more.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#eyewear">Glasses, frames &amp; optical department</a><span class="svc-desc">Designer frames and lenses, fitted by our optical team.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#frames">Frame style guide by face shape</a><span class="svc-desc">Not sure what suits you? We’ll help you pick frames for your face shape.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#sunglasses">Sunglasses &amp; UV protection</a><span class="svc-desc">Prescription and polarized sunglasses with full UV protection.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#eye-health">Eye disease screening &amp; treatment</a><span class="svc-desc">Glaucoma, cataracts, macular degeneration and other eye health concerns.</span></div>
+                  <span class="svc-tag tag-online">Book online · medical visit</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#emergencies">Eye emergencies</a><span class="svc-desc">Red eye, an injury or something stuck in your eye. <a class="svc-call" href="tel:+13037732020">Call (303) 773-2020</a></span></div>
+                  <span class="svc-tag tag-urgent">Call right away</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#lasik">LASIK &amp; surgical co-management</a><span class="svc-desc">Candidacy check, referral and care before and after surgery.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#kids">Pediatric eye care</a><span class="svc-desc">Relaxed, fun eye care for children. Call and we’ll find the right visit.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-panel" id="book-castle-rock" data-loc="castle-rock" tabindex="-1" aria-labelledby="book-castle-rock-title">
+          <div class="booking-panel-head">
+            <h3 id="book-castle-rock-title">Castle Rock office</h3>
+            <p class="booking-meta">834 S Perry St, Suite E · Mon–Fri 8:00 am – 5:00 pm</p>
+            <p class="booking-summary">At Castle Rock you can book an <strong>eye exam</strong> (new or existing patient) or a <strong>non-emergency medical visit</strong> online. For other services, call <a href="tel:+13036880707">(303) 688-0707</a>.</p>
+          </div>
+          <div class="booking-cols">
+            <div class="booking-online">
+              <h4>Book online</h4>
+              <ul class="visit-types">
+                <li>Eye exam — new patient</li>
+                <li>Eye exam — existing patient</li>
+                <li>Medical visit (non-emergency)</li>
+              </ul>
+              <p class="booking-steps">In the scheduler, choose <strong>Modern Eyes – Castle Rock</strong>, then your visit type, insurance and a time. You can pick Dr. Benjamin Sturdy or Dr. Tara Keesey, or “No preference.”</p>
+              <a class="btn btn-primary btn-block booking-go" href="https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com" target="_blank" rel="noopener">Continue to online scheduler <svg class="ext-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+              <p class="new-tab-hint" aria-hidden="true">Opens in a new tab. This page stays open.</p>
+              <a class="btn btn-secondary btn-block" href="tel:+13036880707">Call Castle Rock (303) 688-0707</a>
+            </div>
+            <div class="booking-services">
+              <h4>Our services</h4>
+              <ul class="svc-list">
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#exams">Comprehensive eye &amp; vision exams</a><span class="svc-desc">Yearly checkups: vision, eye pressure and a full eye health check.</span></div>
+                  <span class="svc-tag tag-online">Book online · eye exam</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#technology">Drop-free exams &amp; retinal imaging</a><span class="svc-desc">Ultra-wide-field retinal imaging is standard, often with no dilating drops.</span></div>
+                  <span class="svc-tag tag-online">Part of your exam</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#contacts">Contact lens exams &amp; fittings</a><span class="svc-desc">Soft, toric, multifocal and colored lenses. Ask at your eye exam or call.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#specialty-contacts">Hard-to-fit &amp; specialty contacts</a><span class="svc-desc">Scleral, hybrid and gas permeable lenses for keratoconus, dry eye and more.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#eyewear">Glasses, frames &amp; optical department</a><span class="svc-desc">Designer frames and lenses, fitted by our optical team.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#frames">Frame style guide by face shape</a><span class="svc-desc">Not sure what suits you? We’ll help you pick frames for your face shape.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#sunglasses">Sunglasses &amp; UV protection</a><span class="svc-desc">Prescription and polarized sunglasses with full UV protection.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#eye-health">Eye disease screening &amp; treatment</a><span class="svc-desc">Glaucoma, cataracts, macular degeneration and other eye health concerns.</span></div>
+                  <span class="svc-tag tag-online">Book online · medical visit</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#emergencies">Eye emergencies</a><span class="svc-desc">Red eye, an injury or something stuck in your eye. <a class="svc-call" href="tel:+13036880707">Call (303) 688-0707</a></span></div>
+                  <span class="svc-tag tag-urgent">Call right away</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#lasik">LASIK &amp; surgical co-management</a><span class="svc-desc">Candidacy check, referral and care before and after surgery.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#kids">Pediatric eye care</a><span class="svc-desc">Relaxed, fun eye care for children. Call and we’ll find the right visit.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-panel" id="book-aurora" data-loc="aurora" tabindex="-1" aria-labelledby="book-aurora-title">
+          <div class="booking-panel-head">
+            <h3 id="book-aurora-title">Aurora office</h3>
+            <p class="booking-meta">4252 S Chambers Rd · Tue–Fri 8:30 am – 5:00 pm · Sat 8:00 am – 2:00 pm</p>
+            <p class="booking-summary">At Aurora you can book an <strong>eye exam</strong> (new or existing patient) online. For medical visits and other services, call <a href="tel:+13036901696">(303) 690-1696</a>.</p>
+          </div>
+          <div class="booking-cols">
+            <div class="booking-online">
+              <h4>Book online</h4>
+              <ul class="visit-types">
+                <li>Eye exam — new patient</li>
+                <li>Eye exam — existing patient</li>
+              </ul>
+              <p class="booking-steps">In the scheduler, choose <strong>Modern Eyes – Aurora</strong>, then your visit type, insurance and a time. You can pick Dr. Benjamin Sturdy or Dr. Kevin Anderson, or “No preference.”</p>
+              <a class="btn btn-primary btn-block booking-go" href="https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com" target="_blank" rel="noopener">Continue to online scheduler <svg class="ext-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+              <p class="new-tab-hint" aria-hidden="true">Opens in a new tab. This page stays open.</p>
+              <a class="btn btn-secondary btn-block" href="tel:+13036901696">Call Aurora (303) 690-1696</a>
+            </div>
+            <div class="booking-services">
+              <h4>Our services</h4>
+              <ul class="svc-list">
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#exams">Comprehensive eye &amp; vision exams</a><span class="svc-desc">Yearly checkups: vision, eye pressure and a full eye health check.</span></div>
+                  <span class="svc-tag tag-online">Book online · eye exam</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#technology">Drop-free exams &amp; retinal imaging</a><span class="svc-desc">Ultra-wide-field retinal imaging is standard, often with no dilating drops.</span></div>
+                  <span class="svc-tag tag-online">Part of your exam</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#contacts">Contact lens exams &amp; fittings</a><span class="svc-desc">Soft, toric, multifocal and colored lenses. Ask at your eye exam or call.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#specialty-contacts">Hard-to-fit &amp; specialty contacts</a><span class="svc-desc">Scleral, hybrid and gas permeable lenses for keratoconus, dry eye and more.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#eyewear">Glasses, frames &amp; optical department</a><span class="svc-desc">Designer frames and lenses, fitted by our optical team.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#frames">Frame style guide by face shape</a><span class="svc-desc">Not sure what suits you? We’ll help you pick frames for your face shape.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#sunglasses">Sunglasses &amp; UV protection</a><span class="svc-desc">Prescription and polarized sunglasses with full UV protection.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#eye-health">Eye disease screening &amp; treatment</a><span class="svc-desc">Glaucoma, cataracts, macular degeneration and other eye health concerns.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#emergencies">Eye emergencies</a><span class="svc-desc">Red eye, an injury or something stuck in your eye. <a class="svc-call" href="tel:+13036901696">Call (303) 690-1696</a></span></div>
+                  <span class="svc-tag tag-urgent">Call right away</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#lasik">LASIK &amp; surgical co-management</a><span class="svc-desc">Candidacy check, referral and care before and after surgery.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+                <li class="svc-row">
+                  <div class="svc-text"><a class="svc-name" href="services.html#kids">Pediatric eye care</a><span class="svc-desc">Relaxed, fun eye care for children. Call and we’ll find the right visit.</span></div>
+                  <span class="svc-tag tag-call">Call the office</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="book" aria-labelledby="call-heading">
+      <div class="container">
         <div class="section-head section-head-center">
-          <h2>Or call to book</h2>
+          <h2 id="call-heading">Or call any office</h2>
           <p>Tap a number to call from your phone. Prefer to write? <a href="locations.html">Office emails are on the Locations page</a>.</p>
         </div>
 
