@@ -56,6 +56,7 @@
   window.addEventListener("hashchange", openFromHash);
 
   // Booking step: pick an office to see what can be booked online there
+  let pickOffice = null;
   const choices = Array.from(document.querySelectorAll(".loc-choice"));
   const panels = Array.from(document.querySelectorAll(".booking-panel"));
   const prompt = document.getElementById("loc-prompt");
@@ -71,6 +72,7 @@
         c.setAttribute("aria-pressed", c.dataset.loc === slug ? "true" : "false");
       });
       if (prompt) prompt.hidden = found;
+      if (found) document.dispatchEvent(new CustomEvent("me:office", { detail: slug }));
       if (found && focus) {
         const panel = document.getElementById("book-" + slug);
         panel.focus({ preventScroll: true });
@@ -99,9 +101,201 @@
         selectLoc(null, false);
       }
     }
+    pickOffice = function (slug) {
+      selectLoc(slug, false);
+      if (history.replaceState) history.replaceState(null, "", "#book-" + slug);
+    };
     fromHash(false);
     if (/^#book-(centennial|castle-rock|aurora)$/.test(location.hash)) fromHash(true);
     window.addEventListener("hashchange", function () { fromHash(true); });
+  }
+
+  // "Which exam do I need?" guide on the booking step
+  const guide = document.querySelector("[data-guide]");
+  if (guide) {
+    const SCHED = "https://scheduler.eyefinity.com/index.html?domainName=moderneyesco.com";
+    const OFFICES = {
+      "centennial": { name: "Centennial", label: "Modern Eyes - Centennial", tel: "+13037732020", phone: "(303) 773-2020", medical: true, doctors: "Dr. Benjamin Sturdy or Dr. Tara Keesey" },
+      "castle-rock": { name: "Castle Rock", label: "Modern Eyes - Castle Rock", tel: "+13036880707", phone: "(303) 688-0707", medical: true, doctors: "Dr. Benjamin Sturdy or Dr. Tara Keesey" },
+      "aurora": { name: "Aurora", label: "Modern Eyes - Aurora", tel: "+13036901696", phone: "(303) 690-1696", medical: false, doctors: "Dr. Benjamin Sturdy or Dr. Kevin Anderson" }
+    };
+    const ORDER = ["centennial", "castle-rock", "aurora"];
+    const EXT = '<svg class="ext-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const steps = {};
+    guide.querySelectorAll(".guide-step").forEach(function (s) { steps[s.dataset.step] = s; });
+    const result = guide.querySelector("[data-result]");
+    const state = { reason: null, patient: null, office: null };
+    let trail = [];
+
+    function currentOffice() {
+      const pressed = document.querySelector('.loc-choice[aria-pressed="true"]');
+      return pressed ? pressed.dataset.loc : null;
+    }
+    function needsPatient(r) { return r === "routine" || r === "glasses"; }
+    function plan() {
+      // Which questions this answer path asks, in order
+      if (state.reason === "urgent") return ["reason"];
+      const q = ["reason"];
+      if (needsPatient(state.reason)) q.push("patient");
+      q.push("office");
+      return q;
+    }
+    function show(name, focus) {
+      const order = plan();
+      Object.keys(steps).forEach(function (k) { steps[k].hidden = k !== name; });
+      result.hidden = name !== "result";
+      if (name !== "result") {
+        const prog = steps[name].querySelector("[data-progress]");
+        const total = order.length;
+        const n = order.indexOf(name) + 1;
+        if (prog) prog.textContent = name === "reason" ? "Quick question" : "Question " + n + " of " + total;
+        if (focus) steps[name].querySelector(".guide-q").focus({ preventScroll: true });
+      }
+      if (focus) {
+        const top = guide.getBoundingClientRect().top;
+        if (top < 0 || top > window.innerHeight * 0.5) guide.scrollIntoView({ block: "start", behavior: "auto" });
+      }
+    }
+    function nextAfter(name) {
+      const order = plan();
+      for (let i = order.indexOf(name) + 1; i < order.length; i++) {
+        if (order[i] === "office" && state.office) continue; // already picked an office
+        return order[i];
+      }
+      return "result";
+    }
+    function go(from, focus) {
+      const to = nextAfter(from);
+      trail.push(from);
+      if (to === "result") renderResult(focus);
+      else show(to, focus);
+    }
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+    function schedBtn(text) {
+      return '<a class="btn btn-primary guide-go" href="' + SCHED + '" target="_blank" rel="noopener">' + esc(text || "Continue to online scheduler") + " " + EXT + '<span class="sr-only"> (opens in a new tab)</span></a>';
+    }
+    function callBtn(o, primary) {
+      return '<a class="btn ' + (primary ? "btn-coral" : "btn-secondary") + ' guide-call" href="tel:' + o.tel + '">Call ' + esc(o.name) + ' <span class="nowrap">' + o.phone + "</span></a>";
+    }
+    function officeLine(o) {
+      return '<p class="result-office">Office: <strong>' + esc(o.name) + '</strong> <button type="button" class="guide-link" data-change-office>Change office</button></p>';
+    }
+    function bookSteps(o, visit) {
+      return '<ol class="result-steps">' +
+        "<li>Tap <strong>Continue to online scheduler</strong> below. It opens in a new tab.</li>" +
+        "<li>Choose <strong>" + esc(o.label) + "</strong>.</li>" +
+        '<li>Choose <span class="visit-label">' + esc(visit) + "</span>.</li>" +
+        "<li>Pick your <strong>insurance carrier</strong> (required). Keep your insurance card handy.</li>" +
+        "<li>Pick " + esc(o.doctors) + ", or “No Preference,” then choose a time.</li>" +
+        "</ol>";
+    }
+    function card(kind, kicker, title, body, actions) {
+      return '<div class="result-card result-' + kind + '">' +
+        '<p class="result-kicker">' + kicker + "</p>" +
+        '<h4 class="result-title" tabindex="-1">' + title + "</h4>" + body +
+        '<div class="result-actions">' + actions + "</div>" +
+        '<p class="new-tab-hint result-hint">The scheduler opens in a new tab, so this page stays open.</p>' +
+        '<div class="result-foot"><button type="button" class="guide-back" data-back>← Back</button><button type="button" class="guide-link" data-restart>Start over</button></div>' +
+        "</div>";
+    }
+
+    function renderResult(focus) {
+      const r = state.reason;
+      const o = OFFICES[state.office];
+      let html = "";
+      if (r === "urgent") {
+        html = '<div class="result-card result-urgent">' +
+          '<p class="result-kicker">Urgent eye problem</p>' +
+          '<h4 class="result-title" tabindex="-1">Call an office right away</h4>' +
+          "<p>Please don’t use the online scheduler for this. We see patients for eye emergencies like a red eye or something stuck in the eye, so call your nearest office now and we’ll tell you what to do.</p>" +
+          '<div class="result-actions result-actions-3">' + ORDER.map(function (k) { return callBtn(OFFICES[k], true); }).join("") + "</div>" +
+          '<p class="result-er"><strong>If we’re closed or it’s a serious injury,</strong> go to the nearest emergency room or call 911.</p>' +
+          '<div class="result-foot"><button type="button" class="guide-back" data-back>← Back</button><button type="button" class="guide-link" data-restart>Start over</button></div>' +
+          "</div>";
+      } else if (r === "routine" || r === "glasses") {
+        const visit = state.patient === "new" ? "Eye Exam - New Patient" : "Eye Exam - Existing Patient";
+        let body = officeLine(o) + bookSteps(o, visit);
+        if (r === "glasses") body += '<p class="result-note">Your eye exam includes vision testing for an updated glasses prescription, and our optical team can help you pick frames afterward. Already have a current prescription and just need new frames or lenses? Call ' + esc(o.name) + " at " + o.phone + ".</p>";
+        if (state.patient === "new") body += '<p class="result-note">First visit? Please download and fill out the <a href="#new-patients">new patient form</a> and bring it with you.</p>';
+        html = card("book", "Book online", "Choose <span class=\"visit-label\">" + visit + "</span>", body, schedBtn() + callBtn(o, false));
+      } else if (r === "problem") {
+        if (o.medical) {
+          const body = officeLine(o) + bookSteps(o, "Medical Visit (Non-Emergency)") +
+            '<p class="result-note">If your eye is very painful, was injured, or your vision changed suddenly, don’t wait for an appointment. Call ' + esc(o.name) + " at " + o.phone + " right away.</p>";
+          html = card("book", "Book online", "Choose <span class=\"visit-label\">Medical Visit (Non-Emergency)</span>", body, schedBtn() + callBtn(o, false));
+        } else {
+          const body = officeLine(o) +
+            "<p>Medical visits can’t be booked online at the Aurora office yet. Call Aurora at " + o.phone + " and we’ll find you a time.</p>" +
+            '<p class="result-note">Prefer to book online? <strong>Medical Visit (Non-Emergency)</strong> can be booked online at <strong>Centennial</strong> or <strong>Castle Rock</strong>. <button type="button" class="guide-link" data-change-office>Choose another office</button></p>';
+          html = card("call", "Call to book", "Call the Aurora office", body, callBtn(o, true) + schedBtn("Book online at Centennial or Castle Rock"));
+        }
+      } else {
+        const info = {
+          contacts: ["Call to book your contact lens exam", "Contact lens exams and fittings, including specialty and hard-to-fit lenses, aren’t in the online scheduler yet. Call " + esc(o.name) + " and we’ll set up the right visit for you."],
+          child: ["Call to book your child’s eye exam", "We love seeing kids, and we keep their visits relaxed and fun. Children’s exams aren’t in the online scheduler yet, so call " + esc(o.name) + " and we’ll find the right time."],
+          lasik: ["Call about LASIK", "We check whether you’re a good candidate, refer you to the LASIK surgery center we work with, and handle your care before and after surgery. Call " + esc(o.name) + " to set up a visit, or <a href=\"services.html#lasik\">read more about LASIK</a>."]
+        }[r];
+        const body = officeLine(o) + "<p>" + info[1] + "</p>" + '<p class="result-note">Have your insurance card handy when you call.</p>';
+        html = card("call", "Call to book", info[0], body, callBtn(o, true));
+      }
+      result.innerHTML = html;
+      show("result", false);
+      if (focus) {
+        const t = result.querySelector(".result-title");
+        if (t) t.focus({ preventScroll: true });
+        const top = guide.getBoundingClientRect().top;
+        if (top < 0 || top > window.innerHeight * 0.5) guide.scrollIntoView({ block: "start" });
+      }
+    }
+
+    function restart(focus) {
+      state.reason = null; state.patient = null; state.office = currentOffice();
+      trail = [];
+      result.innerHTML = "";
+      show("reason", focus);
+    }
+
+    function back() {
+      const prev = trail.pop();
+      if (!prev) return restart(true);
+      show(prev, true);
+    }
+
+    guide.addEventListener("click", function (e) {
+      const opt = e.target.closest(".guide-opt");
+      if (opt) {
+        if (opt.dataset.reason) {
+          state.reason = opt.dataset.reason; state.patient = null;
+          if (!state.office) state.office = currentOffice();
+          go("reason", true);
+        } else if (opt.dataset.patient) {
+          state.patient = opt.dataset.patient;
+          go("patient", true);
+        } else if (opt.dataset.office) {
+          state.office = opt.dataset.office;
+          if (pickOffice) pickOffice(state.office);
+          go("office", true);
+        }
+        return;
+      }
+      if (e.target.closest("[data-back]")) { back(); return; }
+      if (e.target.closest("[data-restart]")) { restart(true); return; }
+      if (e.target.closest("[data-change-office]")) {
+        trail = plan().filter(function (h) { return h !== "office"; });
+        show("office", true);
+      }
+    });
+
+    // Keep the guide in step with the office picker below it
+    document.addEventListener("me:office", function (e) {
+      const slug = e.detail;
+      if (!slug || slug === state.office) return;
+      state.office = slug;
+      if (!result.hidden) renderResult(false);
+    });
+
+    restart(false);
   }
 
   const hero = document.querySelector(".hero");
