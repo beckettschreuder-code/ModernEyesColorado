@@ -13,7 +13,7 @@
   --teal-soft: #e4f3f5;
   --teal-glow: rgba(26, 138, 154, 0.18);
   --coral: #e8896b;
-  --coral-deep: #d46d4e;
+  --coral-deep: #a94a2b; /* darkened from #d46d4e: 4.8:1+ on every background it is used on */
   --coral-soft: #fde8df;
   --peach: #f5c4a8;
   --border: #e8ddd2;
@@ -449,12 +449,12 @@ a:hover {
 }
 
 .btn-coral {
-  background: var(--coral);
+  background: var(--coral-deep);
   color: #fff;
 }
 
 .btn-coral:hover {
-  background: var(--coral-deep);
+  background: #8a3c22;
   color: #fff;
 }
 
@@ -1094,18 +1094,21 @@ a:hover {
 
 /* Mobile */
 @media (max-width: 900px) {
-  .nav {
-    gap: 0;
-  }
+  /* Without JavaScript the links simply wrap under the logo. */
+  .header-inner { flex-wrap: wrap; }
+  .nav { flex-basis: 100%; flex-wrap: wrap; gap: 0 1rem; padding-bottom: 0.5rem; }
 
-  .nav-toggle {
+  /* With JavaScript: menu button + dropdown. The button comes BEFORE the links in the HTML,
+     so Tab goes button -> links. A closed menu is visibility:hidden, so its links can't be focused. */
+  .js .nav-toggle {
     display: flex;
   }
 
-  .nav {
+  .js .nav {
     position: fixed;
     inset: var(--header-h) 0 auto 0;
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: stretch;
     gap: 0;
     padding: 1rem 1.25rem 1.5rem;
@@ -1114,18 +1117,24 @@ a:hover {
     box-shadow: var(--shadow);
     transform: translateY(-120%);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, visibility 0s linear 0.2s;
   }
 
   body.nav-open .nav {
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
+    transition: transform 0.2s ease, opacity 0.2s ease, visibility 0s;
   }
 
   .nav a {
     padding: 0.85rem 0.5rem;
+  }
+
+  .js .nav a {
     border-bottom: 1px solid var(--border);
   }
 
@@ -1155,7 +1164,7 @@ a:hover {
 
   .hero {
     min-height: auto;
-    padding: 3rem 0 5rem;
+    padding: 4.75rem 0 5rem; /* top room for the Pause button */
   }
 
   .hero::before {
@@ -1211,11 +1220,19 @@ a:hover {
   .hero-actions .btn {
     flex: 1 1 100%;
   }
+  /* Book online and Call an office sit side by side on phones */
+  .hero-actions .btn-primary,
+  .hero-actions .hero-call {
+    flex: 1 1 40%;
+    padding-inline: 0.75rem;
+    white-space: nowrap;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hero-slide { transition: none; }
+  .js .nav { transition: none; }
 }
 
 /* ---- Added sections ---- */
@@ -1278,7 +1295,7 @@ a:hover {
   padding: 0.2rem 0.75rem;
   border-radius: 999px;
   background: #fff;
-  color: #b4532f;
+  color: var(--coral-deep);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -1638,3 +1655,66 @@ a:hover {
 .guide-call { flex-wrap: wrap; column-gap: .3rem; }
 .guide-call { row-gap: 0; }
 @media (max-width: 600px) { .result-actions .btn { padding: .8rem 1rem; font-size: .95rem; } }
+
+
+/* ---- Pre-launch review fixes ---- */
+/* Hero photos are real <img> elements now (width/height set in HTML to avoid layout shift) */
+.hero-slide { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+
+/* "Call an office" next to Book online: phones only */
+.hero-call { display: none; }
+@media (max-width: 700px) { .hero-call { display: inline-flex; } }
+
+/* Visible, persistent pause / play button for the slideshow */
+.hero-pause {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.95rem 0.4rem 0.8rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1a2a32;
+  font: 600 0.9rem/1 var(--font-sans);
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(26, 42, 50, 0.18);
+}
+.hero-pause:hover { background: #fff; }
+.hero-pause:focus-visible { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 5px #14707d; }
+.hero-pause-icon { display: inline-block; width: 0.7rem; height: 0.8rem; border-left: 3px solid currentColor; border-right: 3px solid currentColor; }
+.hero-pause.is-paused .hero-pause-icon { width: 0; height: 0; border: 0; border-top: 0.45rem solid transparent; border-bottom: 0.45rem solid transparent; border-left: 0.75rem solid currentColor; }
+/* Without JavaScript there is no slideshow to pause */
+html:not(.js) .hero-pause, html:not(.js) .hero-controls { display: none; }
+
+/* New patient form help + privacy placeholder */
+.form-help { margin: 1rem 0 0; font-size: 0.95rem; }
+.form-help-calls { display: flex; flex-wrap: wrap; gap: 0.15rem 1.1rem; margin-top: 0.35rem; }
+.form-help-calls a { white-space: nowrap; font-weight: 600; }
+.form-privacy { margin: 0.75rem 0 0; font-size: 0.85rem; color: var(--ink-muted); }
+
+/* Offer card link + offer page */
+.offer-card .offer-more { margin: 0.75rem 0 0; font-weight: 600; }
+.offer-card .offer-more a { color: var(--teal-deep); }
+.offer-page { max-width: 46rem; margin: 0 auto; }
+.offer-page .offer-card { margin-top: 0; }
+.offer-page .offer-fine { font-size: 0.95rem; }
+.offer-offices { margin: 2rem 0 0; }
+.offer-offices h2 { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 0.5rem; }
+.offer-office-list { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0.75rem; }
+.offer-office-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.9rem 1.1rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.offer-office-list strong { display: block; }
+.offer-office-list span { color: var(--ink-muted); font-size: 0.92rem; }
+.offer-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.offer-ended-box { display: none; text-align: center; padding: 1.75rem 1.5rem; border-radius: var(--radius); background: var(--teal-soft); border: 1px solid var(--border); }
+.offer-ended-box h2 { font-family: var(--font-display); margin: 0 0 0.5rem; }
+.offer-ended .offer-ended-box { display: block; }
+.offer-ended .offer-live { display: none; }
+@media (max-width: 420px) { .offer-office-list .btn { width: 100%; } }
+.offer-card h2 { font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.55rem); margin: 0 0 0.5rem; }
+[hidden] { display: none !important; }
+#new-patients, #insurance, #offers { scroll-margin-top: calc(var(--header-h) + 8px); }

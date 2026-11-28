@@ -40,6 +40,9 @@
       <a class="logo" href="index.html">
         <img class="logo-img" src="assets/images/logo.png" alt="Modern Eyes" width="612" height="69" />
       </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span>
+      </button>
       <nav class="nav" id="site-nav" aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
         <a href="about.html">About</a>
@@ -49,24 +52,21 @@
         <a href="reviews.html">Reviews</a>
         <a class="nav-cta" href="book.html#book-online">Book online</a>
       </nav>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-        <span></span><span></span>
-      </button>
     </div>
   </header>
 
   <main id="main">
     <section class="hero" aria-roledescription="carousel" aria-label="Photos of Modern Eyes patients and eyewear">
       <div class="hero-slides" aria-hidden="true">
-        <div class="hero-slide is-active" style="background-image:url('assets/images/hero-1.jpg.webp')"></div>
-        <div class="hero-slide" style="background-image:url('assets/images/hero-2.jpg.webp')"></div>
-        <div class="hero-slide" style="background-image:url('assets/images/hero-3.jpg.webp')"></div>
-        <div class="hero-slide" style="background-image:url('assets/images/hero-5.jpg.webp')"></div>
-        <div class="hero-slide" style="background-image:url('assets/images/slide-lifestyle-1.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('assets/images/slide-lifestyle-2.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('assets/images/slide-lifestyle-3.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('assets/images/slide-lifestyle-4.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('assets/images/soft-bg.jpg.webp')"></div>
+        <img class="hero-slide is-active" src="assets/images/hero-1.jpg.webp" srcset="assets/images/hero-1-800.webp 800w, assets/images/hero-1-1280.webp 1280w, assets/images/hero-1.jpg.webp 1920w" sizes="(max-width: 700px) 200vw, 100vw" width="1920" height="800" alt="" fetchpriority="high" decoding="async" />
+        <img class="hero-slide" data-src="assets/images/hero-2.jpg.webp" data-srcset="assets/images/hero-2-800.webp 800w, assets/images/hero-2-1280.webp 1280w, assets/images/hero-2.jpg.webp 1920w" sizes="(max-width: 700px) 200vw, 100vw" width="1920" height="800" alt="" decoding="async" />
+        <img class="hero-slide" data-src="assets/images/hero-3.jpg.webp" data-srcset="assets/images/hero-3-800.webp 800w, assets/images/hero-3-1280.webp 1280w, assets/images/hero-3.jpg.webp 1920w" sizes="(max-width: 700px) 200vw, 100vw" width="1920" height="800" alt="" decoding="async" />
+        <img class="hero-slide" data-src="assets/images/hero-5.jpg.webp" data-srcset="assets/images/hero-5-800.webp 800w, assets/images/hero-5-1280.webp 1280w, assets/images/hero-5.jpg.webp 1920w" sizes="(max-width: 700px) 200vw, 100vw" width="1920" height="800" alt="" decoding="async" />
+        <img class="hero-slide" data-src="assets/images/slide-lifestyle-1.jpg" data-srcset="assets/images/slide-lifestyle-1-800.webp 800w, assets/images/slide-lifestyle-1-1280.webp 1280w, assets/images/slide-lifestyle-1.jpg 1400w" sizes="(max-width: 700px) 200vw, 100vw" width="1400" height="933" alt="" decoding="async" />
+        <img class="hero-slide" data-src="assets/images/slide-lifestyle-2.jpg" data-srcset="assets/images/slide-lifestyle-2-800.webp 800w, assets/images/slide-lifestyle-2-1280.webp 1280w, assets/images/slide-lifestyle-2.jpg 1400w" sizes="(max-width: 700px) 200vw, 100vw" width="1400" height="933" alt="" decoding="async" />
+        <img class="hero-slide" data-src="assets/images/slide-lifestyle-3.jpg" data-srcset="assets/images/slide-lifestyle-3-800.webp 800w, assets/images/slide-lifestyle-3-1280.webp 1280w, assets/images/slide-lifestyle-3.jpg 1400w" sizes="(max-width: 700px) 200vw, 100vw" width="1400" height="933" alt="" decoding="async" />
+        <img class="hero-slide" data-src="assets/images/slide-lifestyle-4.jpg" data-srcset="assets/images/slide-lifestyle-4-800.webp 800w, assets/images/slide-lifestyle-4-1280.webp 1280w, assets/images/slide-lifestyle-4.jpg 1400w" sizes="(max-width: 700px) 200vw, 100vw" width="1400" height="931" alt="" decoding="async" />
+        <img class="hero-slide" data-src="assets/images/soft-bg.jpg.webp" data-srcset="assets/images/soft-bg-800.webp 800w, assets/images/soft-bg-1280.webp 1280w, assets/images/soft-bg.jpg.webp 3000w" sizes="(max-width: 700px) 200vw, 100vw" width="3000" height="1133" alt="" decoding="async" />
       </div>
       <div class="container hero-inner">
         <p class="eyebrow">Denver metro · Family eye care</p>
@@ -77,9 +77,11 @@
         <p class="hero-sub">Thorough eye exams, contact lenses and designer eyewear for the whole family, in Centennial, Castle Rock &amp; Aurora.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="book.html#book-online">Book online</a>
+          <a class="btn btn-secondary hero-call" href="#locations">Call an office</a>
           <a class="btn btn-secondary" href="reviews.html">See patient reviews</a>
         </div>
       </div>
+      <button type="button" class="hero-pause" aria-label="Pause photo slideshow" aria-pressed="false"><span class="hero-pause-icon" aria-hidden="true"></span><span class="hero-pause-text">Pause</span></button>
       <div class="hero-controls">
         <button type="button" class="hero-btn hero-prev" aria-label="Previous photo">‹</button>
         <div class="hero-dots" role="group" aria-label="Choose photo"></div>
@@ -145,11 +147,12 @@
             <p>Glaucoma, cataract and macular degeneration testing, plus treatment of eye disease.</p>
           </a>
         </div>
-        <aside class="offer-card" aria-label="Current offer">
+        <aside class="offer-card" aria-label="Current offer" data-offer-expires="2027-06-30">
           <p class="offer-tag">Current offer</p>
           <h3>20% off your second pair — sunglasses included</h3>
           <p>Use your vision insurance on your first complete pair of glasses and get 20% off a second complete pair of prescription glasses or prescription sunglasses.</p>
           <p class="offer-fine">Savings are off the full retail price of frame and lenses with antireflective coating. Cannot be combined with any other offer. Good on multiple complete pairs purchased at the same time. Some restrictions apply. Expires 06/30/2027.</p>
+          <p class="offer-more"><a href="offer-second-pair.html">See the full offer and terms →</a></p>
         </aside>
 
       </div>
@@ -240,9 +243,9 @@
           <a href="about.html">About</a>
           <a href="services.html">Services</a>
           <a href="locations.html">Locations</a>
-          <a href="book.html">New patients</a>
+          <a href="book.html#new-patients">New patients</a>
           <a href="book.html#insurance">Insurance</a>
-          <a href="book.html#offers">Offers</a>
+          <a href="offer-second-pair.html">Offers</a>
           <a href="reviews.html">Reviews</a>
         </nav>
       </div>

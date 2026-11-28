@@ -18,6 +18,8 @@
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   }
+  // The closed menu is visibility:hidden in CSS, so its links can't take focus.
+  // Tab order is: menu button, then the links (the button is before the nav in the HTML).
 
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
@@ -45,6 +47,25 @@
       if (window.innerWidth > 900) setMenu(false);
     });
   }
+
+  // Offers: after the expiry date (end of that day, visitor's local time) hide the offer
+  // cards and show the "offer has ended" message on the offer page.
+  (function () {
+    const cards = document.querySelectorAll("[data-offer-expires]");
+    let ended = false;
+    cards.forEach(function (card) {
+      const p = card.dataset.offerExpires.split("-").map(Number);
+      const endOfDay = new Date(p[0], p[1] - 1, p[2], 23, 59, 59, 999);
+      if (new Date() > endOfDay) {
+        ended = true;
+        if (!card.closest("[data-offer-page]")) card.hidden = true;
+      }
+    });
+    const page = document.querySelector("[data-offer-page]");
+    if (page && ended) page.classList.add("offer-ended");
+    // Testing: add ?offerEnded=1 to the offer page address to preview the ended message.
+    if (page && /[?&]offerEnded=1/.test(location.search)) page.classList.add("offer-ended");
+  })();
 
   // Open a service when linked directly (e.g. services.html#contacts)
   function openFromHash() {
@@ -308,9 +329,29 @@
   const next = hero.querySelector(".hero-next");
   const dotsWrap = hero.querySelector(".hero-dots");
   const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pauseBtn = hero.querySelector(".hero-pause");
   let index = 0;
   let timer = null;
-  let paused = false;
+  let paused = false;          // temporary: mouse or keyboard focus is inside the hero
+  let userPaused = reduceMotion; // the Pause/Play button; starts paused when the visitor prefers reduced motion
+
+  // Photos after the first are loaded only when they are about to be shown.
+  function load(slide) {
+    if (!slide || !slide.dataset.src) return;
+    if (slide.dataset.srcset) slide.srcset = slide.dataset.srcset;
+    slide.src = slide.dataset.src;
+    slide.removeAttribute("data-src");
+    slide.removeAttribute("data-srcset");
+  }
+  function preloadNext() { load(slides[(index + 1) % slides.length]); }
+
+  function renderPause() {
+    if (!pauseBtn) return;
+    pauseBtn.classList.toggle("is-paused", userPaused);
+    pauseBtn.setAttribute("aria-pressed", userPaused ? "true" : "false");
+    pauseBtn.setAttribute("aria-label", userPaused ? "Play photo slideshow" : "Pause photo slideshow");
+    pauseBtn.querySelector(".hero-pause-text").textContent = userPaused ? "Play" : "Pause";
+  }
 
   slides.forEach(function (_, i) {
     const dot = document.createElement("button");
@@ -329,9 +370,11 @@
 
   function go(i) {
     index = (i + slides.length) % slides.length;
+    load(slides[index]);
     slides.forEach(function (slide, n) {
       slide.classList.toggle("is-active", n === index);
     });
+    preloadNext();
     dots.forEach(function (dot, n) {
       dot.classList.toggle("is-active", n === index);
       if (n === index) dot.setAttribute("aria-current", "true");
@@ -346,11 +389,17 @@
 
   function restart() {
     stop();
-    if (reduceMotion || paused || document.hidden) return;
+    if (userPaused || paused || document.hidden) return;
     timer = setInterval(function () {
       go(index + 1);
     }, 5000);
   }
+
+  if (pauseBtn) pauseBtn.addEventListener("click", function () {
+    userPaused = !userPaused;
+    renderPause();
+    restart();
+  });
 
   if (prev) prev.addEventListener("click", function () { go(index - 1); restart(); });
   if (next) next.addEventListener("click", function () { go(index + 1); restart(); });
@@ -372,5 +421,9 @@
     startX = null;
   }, { passive: true });
 
+  renderPause();
   restart();
+  // Warm up photo 2 once the page has finished loading, so the first change is smooth.
+  if (document.readyState === "complete") preloadNext();
+  else window.addEventListener("load", preloadNext);
 })();

@@ -33,6 +33,9 @@
       <a class="logo" href="index.html">
         <img class="logo-img" src="assets/images/logo.png" alt="Modern Eyes" width="612" height="69" />
       </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span>
+      </button>
       <nav class="nav" id="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -42,9 +45,6 @@
         <a href="reviews.html">Reviews</a>
         <a class="nav-cta" href="book.html#book-online">Book online</a>
       </nav>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-        <span></span><span></span>
-      </button>
     </div>
   </header>
 
@@ -432,6 +432,10 @@
             <h3>New patient form</h3>
             <p>Required for new patients. Download and print the New Patient Registration &amp; Health History form, fill it out, and bring it with you to your first appointment. It tells us about your health and any questions, concerns or goals you have for your eyes.</p>
             <a class="btn btn-primary" href="assets/forms/new-patient-form.pdf" target="_blank" rel="noopener">Download the form (PDF)</a>
+            <p class="form-help"><strong>Need help or don’t have a printer?</strong> Call your office and we’ll help, or fill it out at check-in.
+              <span class="form-help-calls"><a href="tel:+13037732020">Centennial (303) 773-2020</a><a href="tel:+13036880707">Castle Rock (303) 688-0707</a><a href="tel:+13036901696">Aurora (303) 690-1696</a></span></p>
+            <!-- TODO (owner): link the practice's Notice of Privacy Practices here once Ben sends it. Checked moderneyescolorado.com, moderneyesco.com and the old Online Forms page on Nov 27, 2026: no privacy notice is published, so nothing is linked on purpose. The form also asks for a Social Security number; Ben should review which fields are still needed. -->
+            <p class="form-privacy" data-todo="privacy-notice">Questions about how we handle your information? Call your office. <!-- TODO (owner): replace this sentence with a link to the privacy notice --></p>
           </article>
           <article class="card info-card" id="insurance">
             <h3>Insurance &amp; payments</h3>
@@ -447,11 +451,12 @@
             <p><strong>Ways to pay:</strong> Apple Pay, cash, check, Visa, Mastercard, Discover, American Express and VSP gift certificates. We’re happy to talk about financing options before your exam, including <a href="https://www.carecredit.com/" target="_blank" rel="noopener noreferrer">CareCredit</a>. We tell patients about exam and treatment costs at the start of the appointment, and you can ask for a breakdown any time.</p>
           </article>
         </div>
-        <aside class="offer-card" id="offers" aria-label="Current offer">
+        <aside class="offer-card" id="offers" aria-label="Current offer" data-offer-expires="2027-06-30">
           <p class="offer-tag">Current offer</p>
           <h3>20% off your second pair — sunglasses included</h3>
           <p>Use your vision insurance on your first complete pair of glasses and get 20% off a second complete pair of prescription glasses or prescription sunglasses.</p>
           <p class="offer-fine">Savings are off the full retail price of frame and lenses with antireflective coating. Cannot be combined with any other offer. Good on multiple complete pairs purchased at the same time. Some restrictions apply. Expires 06/30/2027.</p>
+          <p class="offer-more"><a href="offer-second-pair.html">See the full offer and terms →</a></p>
         </aside>
 
       </div>
@@ -467,9 +472,9 @@
           <a href="about.html">About</a>
           <a href="services.html">Services</a>
           <a href="locations.html">Locations</a>
-          <a href="book.html">New patients</a>
+          <a href="book.html#new-patients">New patients</a>
           <a href="book.html#insurance">Insurance</a>
-          <a href="book.html#offers">Offers</a>
+          <a href="offer-second-pair.html">Offers</a>
           <a href="reviews.html">Reviews</a>
         </nav>
       </div>

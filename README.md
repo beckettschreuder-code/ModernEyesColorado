@@ -27,6 +27,7 @@ A clean, modern site for a Colorado optometry practice with three offices (Cente
 | `services.html` | Clickable services: exams, drop-free imaging, contacts, hard-to-fit contacts, eyewear, eye health & emergencies, LASIK, kids |
 | `locations.html` | Three offices with addresses, phones, hours, maps, email |
 | `reviews.html` | Sample review cards (real quotes later) |
+| `offer-second-pair.html` | The second-pair offer page (terms, offices, Call about frames, auto "offer ended" message). See `docs/campaigns.md` |
 | `book.html` | Patients page: book online (Eyefinity), call buttons, new patient form (PDF), insurance & payments, current offer |
 
 Shared files: `css/styles.css`, `js/main.js`, `favicon.ico`, `assets/forms/new-patient-form.pdf` (copied from Ben’s current site)
