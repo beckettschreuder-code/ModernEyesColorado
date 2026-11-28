@@ -26,7 +26,8 @@ A clean, modern site for a Colorado optometry practice with three offices (Cente
 | `about.html` | About Modern Eyes + full bios for Drs. Sturdy, Keesey and Anderson |
 | `services.html` | Clickable services: exams, drop-free imaging, contacts, hard-to-fit contacts, eyewear, eye health & emergencies, LASIK, kids |
 | `locations.html` | Three offices with addresses, phones, hours, maps, email |
-| `reviews.html` | Sample review cards (real quotes later) |
+| `reviews.html` | Links to each office's real Google reviews (no review text copied) |
+| `404.html` | "Page not found" page with a way back home |
 | `offer-second-pair.html` | The second-pair offer page (terms, offices, Call about frames, auto "offer ended" message). See `docs/campaigns.md` |
 | `book.html` | Patients page: book online (Eyefinity), call buttons, new patient form (PDF), insurance & payments, current offer |
 
@@ -83,3 +84,6 @@ Dad / Ian can help with domain DNS (the settings that point the website name to 
 - Confirm the **insurance list** (taken from the logos on moderneyescolorado.com: Medicaid, Railroad Medicare, UMR, UnitedHealthcare).
 - Swap the **sample reviews** for real patient reviews.
 - Remove the “Preview site — not live yet” line in the footer of each page.
+
+
+Fact check: see `docs/truth-audit.md` (sources, what was removed, open questions for Ben).

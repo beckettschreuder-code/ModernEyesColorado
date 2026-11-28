@@ -229,15 +229,15 @@
         html = '<div class="result-card result-urgent">' +
           '<p class="result-kicker">Urgent eye problem</p>' +
           '<h4 class="result-title" tabindex="-1">Call an office right away</h4>' +
-          "<p>Please don’t use the online scheduler for this. We see patients for eye emergencies like a red eye or something stuck in the eye, so call your nearest office now and we’ll tell you what to do.</p>" +
+          "<p>Please don’t use the online scheduler for this. We see patients for emergency eye care such as a red eye or something stuck in the eye, so call your nearest office right away.</p>" +
           '<div class="result-actions result-actions-3">' + ORDER.map(function (k) { return callBtn(OFFICES[k], true); }).join("") + "</div>" +
-          '<p class="result-er"><strong>If we’re closed or it’s a serious injury,</strong> go to the nearest emergency room or call 911.</p>' +
+          '<p class="result-er"><strong>If we’re closed, or it’s a serious injury, a chemical splash or sudden vision loss,</strong> go to the nearest emergency room or call 911.</p>' +
           '<div class="result-foot"><button type="button" class="guide-back" data-back>← Back</button><button type="button" class="guide-link" data-restart>Start over</button></div>' +
           "</div>";
       } else if (r === "routine" || r === "glasses") {
         const visit = state.patient === "new" ? "Eye Exam - New Patient" : "Eye Exam - Existing Patient";
         let body = officeLine(o) + bookSteps(o, visit);
-        if (r === "glasses") body += '<p class="result-note">Your eye exam includes vision testing for an updated glasses prescription, and our optical team can help you pick frames afterward. Already have a current prescription and just need new frames or lenses? Call ' + esc(o.name) + " at " + o.phone + ".</p>";
+        if (r === "glasses") body += '<p class="result-note">Your eye exam includes vision testing for an updated glasses prescription, and our staff can help you pick frames afterward. Already have a current prescription and just need new frames or lenses? Call ' + esc(o.name) + " at " + o.phone + ".</p>";
         if (state.patient === "new") body += '<p class="result-note">First visit? Please download and fill out the <a href="#new-patients">new patient form</a> and bring it with you.</p>';
         html = card("book", "Book online", "Choose <span class=\"visit-label\">" + visit + "</span>", body, schedBtn() + callBtn(o, false));
       } else if (r === "problem") {
@@ -247,14 +247,14 @@
           html = card("book", "Book online", "Choose <span class=\"visit-label\">Medical Visit (Non-Emergency)</span>", body, schedBtn() + callBtn(o, false));
         } else {
           const body = officeLine(o) +
-            "<p>Medical visits can’t be booked online at the Aurora office yet. Call Aurora at " + o.phone + " and we’ll find you a time.</p>" +
+            "<p>Medical visits aren’t offered in the online scheduler for the Aurora office. Call Aurora at " + o.phone + " to ask about a visit.</p>" +
             '<p class="result-note">Prefer to book online? <strong>Medical Visit (Non-Emergency)</strong> can be booked online at <strong>Centennial</strong> or <strong>Castle Rock</strong>. <button type="button" class="guide-link" data-change-office>Choose another office</button></p>';
           html = card("call", "Call to book", "Call the Aurora office", body, callBtn(o, true) + schedBtn("Book online at Centennial or Castle Rock"));
         }
       } else {
         const info = {
-          contacts: ["Call to book your contact lens exam", "Contact lens exams and fittings, including specialty and hard-to-fit lenses, aren’t in the online scheduler yet. Call " + esc(o.name) + " and we’ll set up the right visit for you."],
-          child: ["Call to book your child’s eye exam", "We love seeing kids, and we keep their visits relaxed and fun. Children’s exams aren’t in the online scheduler yet, so call " + esc(o.name) + " and we’ll find the right time."],
+          contacts: ["Call to book your contact lens exam", "The online scheduler has no visit type just for contact lens exams and fittings. Call " + esc(o.name) + " to book."],
+          child: ["Call to book your child’s eye exam", "We take pride in caring for our younger patients in an environment that is lighthearted and fun. The online scheduler has no visit type just for children, so call " + esc(o.name) + " to book."],
           lasik: ["Call about LASIK", "We check whether you’re a good candidate, refer you to the LASIK surgery center we work with, and handle your care before and after surgery. Call " + esc(o.name) + " to set up a visit, or <a href=\"services.html#lasik\">read more about LASIK</a>."]
         }[r];
         const body = officeLine(o) + "<p>" + info[1] + "</p>" + '<p class="result-note">Have your insurance card handy when you call.</p>';

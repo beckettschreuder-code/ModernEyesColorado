@@ -1718,3 +1718,5 @@ html:not(.js) .hero-pause, html:not(.js) .hero-controls { display: none; }
 .offer-card h2 { font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.55rem); margin: 0 0 0.5rem; }
 [hidden] { display: none !important; }
 #new-patients, #insurance, #offers { scroll-margin-top: calc(var(--header-h) + 8px); }
+
+.hours-note { font-size: 0.85em; color: var(--ink-muted); font-style: italic; }

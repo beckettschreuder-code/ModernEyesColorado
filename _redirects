@@ -19,4 +19,31 @@
 /reviews     /reviews.html     200
 /book        /book.html        200
 /offers/second-pair  /offer-second-pair.html  200
-/offers  /offer-second-pair.html  200
+/offers  /offer-second-pair.html  301
+
+# Old moderneyescolorado.com / moderneyesco.com addresses -> matching pages here (so old bookmarks and Google results still work)
+/offers---promotions          /offer-second-pair.html   301
+/online-forms                 /book.html#new-patients   301
+/new-patient-center           /book.html#new-patients   301
+/new-patient-forms            /book.html#new-patients   301
+/new-patient-online-forms     /book.html#new-patients   301
+/patient-forms.html           /book.html#new-patients   301
+/insurance-and-payments       /book.html#insurance      301
+/appointment                  /book.html#book-online    301
+/appointment---centennial     /book.html#book-centennial 301
+/appointment---castle-rock    /book.html#book-castle-rock 301
+/schedule-now.html            /book.html#book-online    301
+/meet-the-optometrist         /about.html               301
+/about-us.html                /about.html               301
+/testimonials                 /reviews.html             301
+/eyecare-services             /services.html            301
+/eye-and-vision-exams         /services.html#exams      301
+/contact-lens-exams           /services.html#contacts   301
+/hard-to-fit-contacts         /services.html#specialty-contacts 301
+/sunglasses                   /services.html#sunglasses 301
+/frames                       /services.html#frames     301
+/lasik-eye-surgery            /services.html#lasik      301
+/contact                      /locations.html           301
+/contact-us.html              /locations.html           301
+/contact-us---centennial      /locations.html           301
+/contact-us---castle-rock     /locations.html           301
